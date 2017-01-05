@@ -1,0 +1,62 @@
+﻿@model AWSBucket.Models.DataModel.Bucket
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <h1>Amazon S3 File Upload Application</h1>
+    <p class="lead">This service has been developed to upload files into S3 Bucket</p>
+    <p class="lead">Please See the Below Options </p>
+</div>
+
+<div class="row">
+
+    <div class="col-xs-6">
+
+        <ul class="nav nav-pills">
+            <li><button type="button" class="btn btn-primary  btn-lg" id="btnId" data-toggle="modal" data-target="#myModal">AddBucket</button></li>
+        </ul>
+
+    </div>
+    <div class="col-xs-6">
+        <div class="pull-right">
+            <ul class="nav nav-pills">
+                <li><button type="button" class="btn btn-primary  btn-lg" id="btnId" data-toggle="modal" data-target="#myModal">UploadFile</button></li>
+            </ul>
+
+        </div>
+    </div>
+
+    <div id="myModal" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="AddClient" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Add Bucket</h4>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm("AddBucket", "Index"))
+                    {
+                        <div class="row">
+                            <br/>
+
+                            <div class="form-group-sm form-group form-horizontal">
+                                @Html.LabelFor(m => m.BucketName, "Bucket Name:", new { @class = "control-label col-xs-4", @style = "text-align:right" })
+                                
+                                    @Html.TextBoxFor(m => m.BucketName, new { @class= "form-control form-horizontal",@placeholder = "BucketName"})
+                                
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
